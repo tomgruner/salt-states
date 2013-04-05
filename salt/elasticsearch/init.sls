@@ -9,7 +9,7 @@ openjdk-7-jre-headless:
 
 install_elasticsearch:
   cmd.run:
-    - name: dpkg -i /root/tmp/elasticsearch.deb
+    - name: dpkg -i /tmp/elasticsearch.deb
     - require:
-      - file: /root/tmp/elasticsearch.deb
+      - file: /tmp/elasticsearch.deb
       - pkg: openjdk-7-jre-headless
