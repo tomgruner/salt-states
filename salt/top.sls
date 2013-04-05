@@ -2,3 +2,4 @@ base:
     '*':
         - postgresql
         - nginx
+        - uwsgi

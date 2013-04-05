@@ -1,8 +1,5 @@
 nginx:
-    pkg.installed:
-        - name: nginx
-    service.running:
-        - enable: True
+    pkg.installed
 
 default-nginx:
     file.absent: 

@@ -5,11 +5,16 @@
 #    users:
 #        example_user:
 #            password: example_password
+#        another_user:
+#            password: another_password
 #
 #    databases:
-#        martina:
+#        example_db1:
+#            owner: example_user
+#        example_db2:
 #            owner: example_user
 #
+
 
 
 
