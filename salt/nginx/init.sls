@@ -1,6 +1,3 @@
-include:
-    - reqs
-
 nginx:
     pkg.installed:
         - name: nginx
