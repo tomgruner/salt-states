@@ -1,4 +1,6 @@
 base:
+    '*':
+        - base_packages
 
     'roles:postgresql':
         - match: grain
