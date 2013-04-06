@@ -4,17 +4,21 @@
 #
 #    users:
 #        example_user:
+#            name: some_user
 #            password: example_password
 #        another_user:
+#            name: another_user
 #            password: another_password
 #
 #    databases:
 #        example_db1:
+#            name: example_db
 #            owner: example_user
 #        example_db2:
+#            name: another_db
 #            owner: example_user
 #
-
+# Attention - 'name' is a required arg for each user and database
 
 
 
@@ -50,19 +54,19 @@ postgresql-server-dev-9.1:
         - name: postgresql-server-dev-9.1
 
 
-{% for user, args in pillar['postgresql']['users'].iteritems() %}
-postgres-user-{{ user }}:
+{% for user_key, args in pillar['postgresql']['users'].iteritems() %}
+postgres-user-{{ user_key }}:
     postgres_user.present:
-        - name: {{ user }}
+        - name: {{ args.name }}
         - password: {{ args.password }}
         - runas: postgres
 {% endfor %}
 
 
-{% for database, args in pillar['postgresql']['databases'].iteritems() %}
-postgres-database-{{ database }}:
+{% for database_key, args in pillar['postgresql']['databases'].iteritems() %}
+postgres-database-{{ database_key }}:
     postgres_database.present:
-        - name: {{ database }}
+        - name: {{ args.name }}
         - owner: {{ args.owner }}
         - require:
             - postgres_user: postgres-user-{{ args.owner }}
