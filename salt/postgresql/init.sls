@@ -55,7 +55,7 @@ postgresql-server-dev-9.1:
 
 
 {% for user_key, args in pillar['postgresql']['users'].iteritems() %}
-postgres-user-{{ user_key }}:
+postgres-user-{{args.name}}:
     postgres_user.present:
         - name: {{ args.name }}
         - password: {{ args.password }}
@@ -64,7 +64,7 @@ postgres-user-{{ user_key }}:
 
 
 {% for database_key, args in pillar['postgresql']['databases'].iteritems() %}
-postgres-database-{{ database_key }}:
+postgres-database-{{ args.name }}:
     postgres_database.present:
         - name: {{ args.name }}
         - owner: {{ args.owner }}

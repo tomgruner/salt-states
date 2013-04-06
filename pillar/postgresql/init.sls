@@ -3,7 +3,7 @@ postgresql:
 
     users:
         gallery_blog:
-        	name: my_gallery_blog_user
+            name: my_gallery_blog_user
             password: my_gallery_blog_password
 
     databases:

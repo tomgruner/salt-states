@@ -21,11 +21,7 @@ project-git:
         - rev: {{ project_args['revision'] }}
         - target: {{ project_args['base_path'] }}/{{ project_args['project_name'] }}
         - force: true
-        {% if {{ project_args['repo_ssh_host'] }} %}
-        - require:
-            - ssh_known_hosts: {{ project_args['repo_ssh_host'] }}
-        {% endif %}
-
+        
 
 project-root:
     file:
@@ -41,13 +37,19 @@ project-root:
             - git: project-git
 
 
-{{ project_args['venv_path'] }}:
+venv_directory:
+    file:
+        - directory
+        - name: {{ project_args['virtualenv_path'] }}
+        - makedirs: true
+
+
+{{ project_args['virtualenv_path'] }}:
     virtualenv.manage:
-        - requirements:{{ project_args['base_path'] }}/{{ project_args['pip-requirements-file'] }}
+        - requirements: {{ project_args['base_path'] }}/{{ project_args['project_name'] }}/{{ project_args['pip-requirements-file'] }}
         - clear: false
         - require:
-            - pkg: python-virtualenv
-            - file: project-root
+            - file.directory: venv_directory
 
 
 uwsgi-app:

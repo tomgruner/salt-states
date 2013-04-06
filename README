@@ -3,8 +3,26 @@ Salt States in development for Ubuntu Server
 
 I use the states with Vagrant and Salty Vagrant locally
 
+Quick Start:
+
 1) Install Virtualbox, Vagrant, and Salty Vagrant on your dev machine 
-2) Add in your custom pillar data in a directory called "pillar" located in the root of this repository
-3) run "vagrant up" in the root of this repository
-4) ssh into the virtual machine with "vagrant ssh"
-5) Run salt by using "sudo salt-call state.highstate" inside the virtual machine
+2) Add in your custom pillar data in the 'pillar' directory
+3) Copy your private key to /salt/deploy/id_rsa  
+4) run "vagrant up" in the root of this repository
+5) ssh into the virtual machine with "vagrant ssh"
+6) Run salt by using "sudo salt-call state.highstate" inside the virtual machine
+
+
+Useful commands:
+
+
+Check out the pillar data:
+sudo salt-call pillar.data django_projects
+sudo salt-call pillar.data ssh
+sudo salt-call pillar.data postgresql
+
+Run salt highstate:
+sudo salt-call state.highstate
+
+Run a single state file:
+sudo salt-call state.sls ssh

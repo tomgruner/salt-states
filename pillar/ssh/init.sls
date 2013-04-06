@@ -1,3 +1,3 @@
 ssh:
-	keys:
-		- id_rsa
+    keys:
+        - id_rsa

@@ -14,3 +14,5 @@ base:
         - nginx
         - uwsgi
         - python
+        - ssh
+        - django_projects
