@@ -4,7 +4,7 @@ Salt States in development for Ubuntu Server
 I use the states with Vagrant and Salty Vagrant locally
 
 1) Install Virtualbox, Vagrant, and Salty Vagrant on your dev machine 
-2) run "vagrant up" in the root of this repository
-3) ssh into the virtual machine with "vagrant ssh"
-4) Add in your custom pillar data in a directory called "pillar"
+2) Add in your custom pillar data in a directory called "pillar" located in the root of this repository
+3) run "vagrant up" in the root of this repository
+4) ssh into the virtual machine with "vagrant ssh"
 5) Run salt by using "sudo salt-call state.highstate" inside the virtual machine
