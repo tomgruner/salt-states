@@ -40,6 +40,8 @@ project-git-{{ project_key }}:
         - force: true
         - require:
             - pkg: base_packages
+        - watch_in:
+            - service: uwsgi
         
 
 project-root-{{ project_key }}:

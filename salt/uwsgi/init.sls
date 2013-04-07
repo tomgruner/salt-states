@@ -5,3 +5,7 @@ uwsgi-packages:
             - uwsgi 
             - uwsgi-extra 
             - uwsgi-plugin-python
+
+uwsgi:
+    service:
+        - running

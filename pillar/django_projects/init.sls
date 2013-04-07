@@ -33,8 +33,8 @@ django_projects:
                     expires: max
 
         settings:
-            debug: False
-            template_debug: False
+            debug: True
+            template_debug: True
             secret_key: 'super_secret_key_goes_here'
             database:
                 backend: 'django.db.backends.postgresql_psycopg2'
