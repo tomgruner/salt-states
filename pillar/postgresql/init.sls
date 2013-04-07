@@ -2,11 +2,11 @@
 postgresql:
 
     users:
-        gallery_blog:
-            name: my_gallery_blog_user
-            password: my_gallery_blog_password
-
+#        sample_user_key:
+#            name: sample_user_name
+#            password: sample_user_pass
+#
     databases:
-        gallery_blog:
-            name: my_gallery_blog_db_name
-            owner: my_gallery_blog_user
+#        gallery_blog:
+#            name: sample_user_db
+#            owner: sample_user_name

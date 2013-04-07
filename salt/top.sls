@@ -11,6 +11,7 @@ base:
         - elasticsearch
 
     'roles:web':
+        - match: grain
         - nginx
         - uwsgi
         - python

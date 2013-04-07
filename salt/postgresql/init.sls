@@ -21,7 +21,6 @@
 # Attention - 'name' is a required arg for each user and database
 
 
-
 pg_hba.conf:
     file.managed:
         - name: /etc/postgresql/9.1/main/pg_hba.conf
@@ -33,27 +32,24 @@ pg_hba.conf:
             - pkg: postgresql-9.1
 
 
-postgresql:
+postgresql-packages:
     pkg.installed:
-        - name: postgresql-9.1
+        - names: 
+            - postgresql-9.1   
+            - python-psycopg2
+            - postgresql-server-dev-9.1
+
+
+postgresql:
     service.running:
         - enabled: True
         - watch: 
             - file: pg_hba.conf
         - require: 
-            - pkg: postgresql-9.1
+            - pkg: postgresql-packages
 
 
-postgresql-9.1:
-    pkg.installed:
-        - name: postgresql-9.1
-
-
-postgresql-server-dev-9.1:
-    pkg.installed:
-        - name: postgresql-server-dev-9.1
-
-
+{% if pillar['postgresql']['users'] %}
 {% for user_key, args in pillar['postgresql']['users'].iteritems() %}
 postgres-user-{{args.name}}:
     postgres_user.present:
@@ -61,8 +57,9 @@ postgres-user-{{args.name}}:
         - password: {{ args.password }}
         - runas: postgres
 {% endfor %}
+{% endif %}
 
-
+{% if pillar['postgresql']['databases'] %}
 {% for database_key, args in pillar['postgresql']['databases'].iteritems() %}
 postgres-database-{{ args.name }}:
     postgres_database.present:
@@ -72,3 +69,4 @@ postgres-database-{{ args.name }}:
             - postgres_user: postgres-user-{{ args.owner }}
         - runas: postgres
 {% endfor %}
+{% endif %}
