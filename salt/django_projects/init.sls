@@ -118,7 +118,7 @@ nginx-site-{{ project_key }}:
             base_path: {{ project_args['base_path'] }}/{{ project_args['project_name'] }}
 
 
-django-local-settings-{{ project_key }}:
+django-custom-settings-{{ project_key }}:
     file.managed:
         - name: {{ project_args['base_path'] }}/{{ project_args['project_name'] }}/{{ project_args['custom_settings_file'] }}.py
         - source: salt://django_projects/custom_settings.py
@@ -141,7 +141,11 @@ enable-nginx-site-{{ project_key }}:
     file.symlink:
         - name: /etc/nginx/sites-enabled/{{ project_args['project_name'] }}.conf
         - target: /etc/nginx/sites-available/{{ project_args['project_name'] }}.conf
-        - force: false
+        - watch_in:
+            - service: nginx
 
 
 {% endfor %}
+
+
+

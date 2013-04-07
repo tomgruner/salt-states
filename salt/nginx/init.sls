@@ -1,5 +1,12 @@
+nginx-packages:
+    pkg.installed:
+        - names: 
+            - nginx
+
 nginx:
-    pkg.installed
+    service:
+        - running
+
 
 default-nginx:
     file.absent: 
