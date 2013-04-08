@@ -18,7 +18,7 @@
 
 {% endfor %}
 
-known_host_bitbucket:
+bitbucket:
     ssh_known_hosts:
         - name: bitbucket.org
         - present
@@ -27,7 +27,7 @@ known_host_bitbucket:
         - require:
             - file: /root/.ssh/known_hosts
 
-known_host_github:
+github:
     ssh_known_hosts:
         - name: github.com
         - present

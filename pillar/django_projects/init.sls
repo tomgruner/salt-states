@@ -3,11 +3,11 @@ django_projects:
     
     gallery_blog:
     
-        project_name: gallery_blog_site
-        base_path: /usr/share/nginx/gallery_blog
-        pip-requirements-file: requirements.txt
+        project_path: /usr/share/nginx/gallery_blog
         virtualenv_path: /usr/share/nginx/gallery_blog/virtualenv
-        custom_settings_file: local_settings
+
+        pip-requirements-file: requirements.txt
+        custom_settings_file: local_settings.py
 
         repo: 
             url: git@github.com:tomgruner/django-gallery-blog.git
@@ -25,12 +25,16 @@ django_projects:
             location_aliases:
                 static_files:
                     location: /static
-                    directory: /static
+                    directory: /static_serve
                     expires: max
                 media_files:
                     location: /media
                     directory: /media
                     expires: max
+
+        create_directories:
+            - /static_serve
+            - /media
 
         settings:
             debug: True
