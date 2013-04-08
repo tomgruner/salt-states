@@ -26,3 +26,8 @@ sudo salt-call state.highstate
 
 Run a single state file:
 sudo salt-call state.sls ssh
+
+
+Use unison to sync a directory on the virtual machine so you can edit it on the host machine
+assumes /srv is a shared folder for salt already
+unison -ignore "Path virtualenv" /usr/share/nginx/gallery_blog/ /srv/code 
